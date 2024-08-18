@@ -1,6 +1,6 @@
 # **Spring Boot REST API Complete Project**
 
-This repository contains the complete code for a Spring Boot REST API project, as demonstrated in the YouTube playlist Spring Boot REST API Complete Project.
+This repository contains the complete code for a Spring Boot REST API project.
 
 # Table of Contents
 Introduction
