@@ -3,15 +3,14 @@ package com.godmode.rest.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.godmode.rest.login.service.CloudClientLoginService;
-
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import com.godmode.rest.login.CloudClientUser;
+import com.godmode.rest.login.service.CloudClientLoginService;
 
 @RestController
 @RequestMapping("/user")
@@ -39,9 +38,9 @@ public class CloudClientController {
         return "User Created";
     }
 
-    @PostMapping("/checkUser")
-    public boolean checkUser(@RequestBody String id){
-        return cloudClientLoginService.checkUser(id);
+    @GetMapping("/checkUser{username}")
+    public boolean checkUser(@PathVariable("username") String username){
+        return cloudClientLoginService.checkUser(username);
     }
 
     @GetMapping("/getListOfAllUser")
