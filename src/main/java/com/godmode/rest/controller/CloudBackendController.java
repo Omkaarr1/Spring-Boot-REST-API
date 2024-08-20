@@ -1,7 +1,7 @@
 package com.godmode.rest.controller;
 
-
 import java.util.List;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,16 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.godmode.rest.model.CloudVendor;
+import com.godmode.rest.model.Resources;
 import com.godmode.rest.service.CloudVendorService;
-
+import com.godmode.rest.service.ResourcesService;
 
 @RestController
 @RequestMapping("/cloudvendor")
-public class CloudVendorController {
+public class CloudBackendController {
 
     CloudVendorService cloudVendorService;
     
-    public CloudVendorController(CloudVendorService cloudVendorService) {
+    public CloudBackendController(CloudVendorService cloudVendorService) {
         this.cloudVendorService = cloudVendorService;
     }
 
@@ -57,4 +58,31 @@ public class CloudVendorController {
         cloudVendorService.deleteCloudVendor(vendorId);
         return "Cloud Vendor Deleted Successfully!";
     }
+}
+
+@RestController
+@RequestMapping("/resources")
+class ResourcesController {
+    ResourcesService resourcesService;
+
+    public ResourcesController(ResourcesService resourcesService) {
+        this.resourcesService = resourcesService;
+    }
+
+    @PostMapping("/save")
+    public String saveCloudVendor(@RequestBody Resources resources){
+        System.out.println(resources.getPricePerHour());
+        return resourcesService.saveResource(resources);
+    }
+
+    @PostMapping("/update")
+    public String updateCloudVendor(@RequestBody Resources resources){
+        return resourcesService.updateResurces(resources);
+    }
+
+    @DeleteMapping("/delete")
+    public String deleteCloudVendor(@RequestBody String id){
+        return resourcesService.removeResurces(id);
+    }
+
 }
