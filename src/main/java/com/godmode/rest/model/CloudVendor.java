@@ -15,17 +15,6 @@ public class CloudVendor {
     private String vendorAddress;
     private String vendorPhoneNumber;
 
-    // public CloudVendor() {
-    //     this.vendorId = UUID.randomUUID().toString(); // Automatically generate a unique ID
-    // }
-
-    // public CloudVendor(String vendorName, String vendorAddress, String vendorPhoneNumber) {
-    //     this.vendorId = UUID.randomUUID().toString(); // Automatically generate a unique ID
-    //     this.vendorName = vendorName;
-    //     this.vendorAddress = vendorAddress;
-    //     this.vendorPhoneNumber = vendorPhoneNumber;
-    // } 
-
     public CloudVendor() {
     }
 
