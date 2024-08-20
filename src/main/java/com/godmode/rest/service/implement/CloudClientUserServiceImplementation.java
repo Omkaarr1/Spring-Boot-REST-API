@@ -1,13 +1,13 @@
-package com.godmode.rest.login.service.implementation;
+package com.godmode.rest.service.implement;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import com.godmode.rest.exception.CloudVendorNotFoundException;
-import com.godmode.rest.login.CloudClientUser;
-import com.godmode.rest.login.repository.CloudClientLoginRepository;
-import com.godmode.rest.login.service.CloudClientLoginService;
+import com.godmode.rest.model.CloudClientUser;
+import com.godmode.rest.repository.CloudClientLoginRepository;
+import com.godmode.rest.service.CloudClientLoginService;
 
 @Service
 public class CloudClientUserServiceImplementation implements CloudClientLoginService{

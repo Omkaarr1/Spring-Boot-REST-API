@@ -1,4 +1,4 @@
-package com.godmode.rest.login;
+package com.godmode.rest.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

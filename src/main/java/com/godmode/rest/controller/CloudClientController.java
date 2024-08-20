@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.godmode.rest.login.CloudClientUser;
-import com.godmode.rest.login.service.CloudClientLoginService;
+import com.godmode.rest.model.CloudClientUser;
+import com.godmode.rest.service.CloudClientLoginService;
 
 @RestController
 @RequestMapping("/user")

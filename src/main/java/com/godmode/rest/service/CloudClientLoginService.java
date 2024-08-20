@@ -1,8 +1,8 @@
-package com.godmode.rest.login.service;
+package com.godmode.rest.service;
 
 import java.util.List;
 
-import com.godmode.rest.login.CloudClientUser;
+import com.godmode.rest.model.CloudClientUser;
 
 public interface CloudClientLoginService {
     public String createUser(CloudClientUser cloudClientUser);
