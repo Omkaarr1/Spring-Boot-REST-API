@@ -1,8 +1,0 @@
-#dataContainer {
-    white-space: pre-wrap; /* Preserves formatting */
-    background-color: #f4f4f4;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 20px;
-    font-family: monospace; /* Monospaced font for JSON display */
-}
