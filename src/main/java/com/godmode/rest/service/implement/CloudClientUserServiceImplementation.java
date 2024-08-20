@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import com.godmode.rest.exception.CloudVendorNotFoundException;
 import com.godmode.rest.model.CloudClientUser;
 import com.godmode.rest.repository.CloudClientLoginRepository;
-import com.godmode.rest.service.CloudClientLoginService;
+import com.godmode.rest.service.CloudClientService;
 
 @Service
-public class CloudClientUserServiceImplementation implements CloudClientLoginService{
+public class CloudClientUserServiceImplementation implements CloudClientService{
     CloudClientLoginRepository cloudClientLoginRepository;
 
     public CloudClientUserServiceImplementation(CloudClientLoginRepository cloudClientLoginRepository) {

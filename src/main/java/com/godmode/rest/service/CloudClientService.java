@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.godmode.rest.model.CloudClientUser;
 
-public interface CloudClientLoginService {
+public interface CloudClientService {
     public String createUser(CloudClientUser cloudClientUser);
     public String updateUser(CloudClientUser cloudClientUser);
     public boolean checkUser(String id);

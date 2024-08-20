@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.godmode.rest.model.CloudClientUser;
-import com.godmode.rest.service.CloudClientLoginService;
+import com.godmode.rest.service.CloudClientService;
 
 @RestController
 @RequestMapping("/user")
 public class CloudClientController {
-    CloudClientLoginService cloudClientLoginService;
+    CloudClientService cloudClientLoginService;
 
-    public CloudClientController(CloudClientLoginService cloudClientLoginService) {
+    public CloudClientController(CloudClientService cloudClientLoginService) {
         this.cloudClientLoginService = cloudClientLoginService;
     }
 
