@@ -2,6 +2,7 @@ package com.godmode.rest.service.implement;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.godmode.rest.exception.CloudVendorNotFoundException;
@@ -11,11 +12,9 @@ import com.godmode.rest.service.CloudVendorService;
 
 @Service
 public class CloudVendorServiceImplementation implements CloudVendorService {
+    
+    @Autowired
     CloudVendorRepository cloudVendorRepository;
-
-    public CloudVendorServiceImplementation(CloudVendorRepository cloudVendorRepository) {
-        this.cloudVendorRepository = cloudVendorRepository;
-    }
 
     @Override
     public String createCloudVendor(CloudVendor cloudVendor) {

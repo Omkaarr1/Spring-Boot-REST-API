@@ -3,7 +3,9 @@ package com.godmode.rest.service.implement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.godmode.rest.exception.CloudVendorNotFoundException;
 import com.godmode.rest.model.CloudClientUser;
 import com.godmode.rest.repository.CloudClientLoginRepository;
@@ -11,12 +13,10 @@ import com.godmode.rest.service.CloudClientService;
 
 @Service
 public class CloudClientUserServiceImplementation implements CloudClientService{
+    
+    @Autowired
     CloudClientLoginRepository cloudClientLoginRepository;
-
-    public CloudClientUserServiceImplementation(CloudClientLoginRepository cloudClientLoginRepository) {
-        this.cloudClientLoginRepository = cloudClientLoginRepository;
-    }
-
+    
     @Override
     public String createUser(CloudClientUser cloudClientUser) {
         try{
