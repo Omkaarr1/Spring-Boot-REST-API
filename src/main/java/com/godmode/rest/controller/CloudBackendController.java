@@ -85,4 +85,14 @@ class ResourcesController {
         return resourcesService.removeResurces(id);
     }
 
+    @PostMapping("/getTotalPrice")
+    public String getTotalPrice(@RequestBody String id){
+        return resourcesService.getTotalPrice(id);
+    }
+
+    @PostMapping("/getListOfUsers")
+    public List<String> getListOfUsers(@RequestBody String id){
+        return resourcesService.getListOfUseresForSpecificVendorId(id);
+    }
 }
+

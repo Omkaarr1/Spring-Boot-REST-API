@@ -14,6 +14,8 @@ import com.godmode.rest.repository.ResourcesRepository;
 import com.godmode.rest.service.CloudVendorService;
 import com.godmode.rest.service.ResourcesService;
 
+import jakarta.annotation.Resource;
+
 @Service
 public class CloudBackendServiceImplementation implements CloudVendorService {
     
@@ -72,6 +74,7 @@ public class CloudBackendServiceImplementation implements CloudVendorService {
 
 @Service
 class ResourcesServiceImplementation implements ResourcesService{
+
     @Autowired
     ResourcesRepository resourcesRepository;
     @Autowired
@@ -104,5 +107,25 @@ class ResourcesServiceImplementation implements ResourcesService{
     public String updateResurces(Resources resources) {
         saveResource(resources);
         return "data Updated Successfully";
+    }
+
+    @Override
+    public String getTotalPrice(String user_id) {
+        for(Resources i: resourcesRepository.findAll()){
+            if(i.getUser_id().contains(user_id)){
+                return (Double.valueOf(i.getTotalNoOfHoursUsed()) * 
+                Double.valueOf(i.getPricePerHour())*Double.parseDouble(i.getQuantity()))+"";
+            }
+        }
+        return "Data Not Found";
+    }
+
+    @Override
+    public List<String> getListOfUseresForSpecificVendorId(String resource_id) {
+        for(Resources i:resourcesRepository.findAll()){
+            if(i.getResource_id().equals(resource_id))
+            return i.getUser_id();
+        }
+        return null;
     }
 }
