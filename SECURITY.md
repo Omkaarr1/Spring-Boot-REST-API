@@ -48,4 +48,4 @@ When reporting a vulnerability, please include the following information to help
 We are committed to maintaining the security of our project and ensuring that our users are protected from vulnerabilities. We appreciate the efforts of the security community in identifying and reporting security issues, and we are committed to working with reporters to resolve these issues promptly.
 
 ### Contact
-For any questions about our security policy, or if you need further assistance, please contact us at [security@yourproject.com](mailto:security@yourproject.com).
+For any questions about our security policy, or if you need further assistance, please contact us at [omkargupta702@gmail.com](mailto:omkargupta702@gmail.com).
