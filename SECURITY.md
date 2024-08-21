@@ -22,7 +22,7 @@ The following table outlines the versions of our project that are currently rece
 We take the security of our project seriously. If you discover a security vulnerability, we strongly encourage you to report it as soon as possible. We appreciate your efforts to responsibly disclose your findings and will make every effort to acknowledge your report promptly.
 
 ### How to Report
-- **Email**: Please send an email to omkargupta702@gmail.com(mailto:omkargupta702@gmail.com) with details of the vulnerability. Use a clear and concise subject line (e.g., "Security Vulnerability in ProjectName v5.1.0").
+- **Email**: Please send an email to omkargupta702@gmail.com with details of the vulnerability. Use a clear and concise subject line (e.g., "Security Vulnerability in ProjectName v5.1.0").
 - **GitHub Issues**: Please **do not** report security vulnerabilities via GitHub issues. Instead, use the private reporting methods listed above.
 
 ### Information to Include
