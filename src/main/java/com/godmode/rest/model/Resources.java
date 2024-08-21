@@ -56,6 +56,4 @@ public class Resources {
     public void setPricePerHour(String pricePerHour) {
         this.pricePerHour = pricePerHour;
     }
-
-    
 }
