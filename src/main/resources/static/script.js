@@ -43,21 +43,27 @@ $(document).ready(function() {
         const formData = $(this).serializeArray();
         const data = {};
 
+        console.log(data);
+
         // Convert the serialized form data into a JSON object
         $.each(formData, function(index, field) {
             data[field.name] = field.value;
         });
 
         $.ajax({
-            url: '/user/authUser', // Replace with your server endpoint
+            url: '/user/authUserByUsername', // Replace with your server endpoint
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(data), // Convert the JSON object to a string
             success: function(response) {
                 console.log('Login Response:', response);
-                $(".main").hide();
-                $(".afterlogin").show();
-                sessionStorage.setItem('isLoggedIn', true); // Store login state
+                if(response){
+                    $(".main").hide();
+                    $(".afterlogin").show();
+                    sessionStorage.setItem('isLoggedIn', true); // Store login state
+                }
+                else
+                alert('Login Failed, incorrect password')
             },
             error: function(xhr, status, error) {
                 console.error('Login Error:', error);

@@ -71,7 +71,7 @@ class ResourcesController {
 
     @PostMapping("/save")
     public String saveCloudVendor(@RequestBody Resources resources){
-        System.out.println(resources.getPricePerHour());
+        // System.out.println(resources.getPricePerHour());
         return resourcesService.saveResource(resources);
     }
 
