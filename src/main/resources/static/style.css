@@ -163,3 +163,100 @@ h1 {
 .btn:hover {
 	background: #6d44b8;
 }
+
+.logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: auto;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    background: #573b8a;
+}
+
+.logout-btn:hover {
+    background: #6d44b8;
+}
+
+.billing-btn {
+    position: absolute;
+    top: 20px;
+    right: 100px; /* Adjust this value to position the button to the left of the logout button */
+    width: auto;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    background: #573b8a;
+}
+
+.billing-btn:hover {
+    background: #6d44b8;
+}
+
+.update-btn {
+    position: absolute;
+    top: 20px;
+    right: 229px; /* Adjust this value to position the button to the left of the logout button */
+    width: auto;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    background: #573b8a;
+}
+
+.update-btn:hover {
+    background: #6d44b8;
+}
+
+.updateDetails {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.update.card {
+    width: 30%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 5px 20px 50px #000;
+    padding: 15px;
+}
+
+.update.card label {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #573b8a;
+    display: block;
+    text-align: center;
+}
+
+.update.card input {
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    background: #e0dede;
+    display: block;
+}
+
+.validate-btn, #submitBtn {
+    width: 80%;
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+    color: #fff;
+    background: #573b8a;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease-in;
+}
+
+.validate-btn:hover, #submitBtn:hover {
+    background: #6d44b8;
+}

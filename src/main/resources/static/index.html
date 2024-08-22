@@ -14,6 +14,7 @@
 				<form>
 					<label for="chk" aria-hidden="true">Sign up</label>
 					<input type="text" name="username" placeholder="Username" required="">
+					<input type="text" name="user_id" placeholder="User ID" required="">
 					<input type="email" name="email" placeholder="Email" required="">
 					<input type="password" name="password" placeholder="Password" required="">
 					<input type="user_id" name="user_id" placeholder="User_id" required="">
@@ -44,7 +45,7 @@
                     <button class="btn">Select VM</button>
                 </div>
             </div>
-
+    
             <!-- Storage Resource Card -->
             <div class="card">
                 <img src="https://via.placeholder.com/400x200?text=Storage" alt="Storage">
@@ -54,7 +55,7 @@
                     <button class="btn">Select Storage</button>
                 </div>
             </div>
-
+    
             <!-- Bandwidth Resource Card -->
             <div class="card">
                 <img src="https://via.placeholder.com/400x200?text=Bandwidth" alt="Bandwidth">
@@ -65,6 +66,29 @@
                 </div>
             </div>
         </div>
+        <!-- Buttons Section -->
+        <div class="buttons-section">
+            <button class="btn update-btn" id="updateBtn">Update User Details</button>
+            <button class="btn billing-btn" id="billingBtn">Billing Details</button>
+            <button class="btn logout-btn" id="logoutBtn">Logout</button>
+        </div>
+    </div>
+    
+    <div class="updateDetails">
+        <div class="update card">
+            <form id="updateForm">
+                <label for="chk" aria-hidden="true">Update Details</label>
+                <input type="text" name="username" placeholder="User ID" id="username" required="">
+                <input type="password" name="password" placeholder="Password" id="password" required="">
+                <button type="button" class="btn validate-btn" id="validateBtn">Validate</button>
+                <input type="password" name="newPassword" id="newPassword" placeholder="New Password" required="" style="display: none;">
+                <button type="submit" class="btn" id="submitBtn" style="display: none;">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class ="billingDetails">
+        
     </div>
 
 	<script src="script.js"></script>

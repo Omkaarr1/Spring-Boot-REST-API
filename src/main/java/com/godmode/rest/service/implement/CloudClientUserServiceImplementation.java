@@ -2,6 +2,7 @@ package com.godmode.rest.service.implement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,14 +33,30 @@ public class CloudClientUserServiceImplementation implements CloudClientService{
 
     @Override
     public String updateUser(CloudClientUser cloudClientUser) {
-        try{
-            if(cloudClientLoginRepository.findById(cloudClientUser.getUsername()).isEmpty())
-            throw new CloudVendorNotFoundException("Client ID Not found!");
-            else
-            cloudClientLoginRepository.save(cloudClientUser);
-        }
-        catch(CloudVendorNotFoundException e){
-            throw new CloudVendorNotFoundException(e.getMessage());
+        System.out.println(cloudClientUser.toString());
+
+        try {
+            // Fetch the existing user by ID (assuming the ID is a string here)
+            Optional<CloudClientUser> optionalUser = cloudClientLoginRepository.findById(cloudClientUser.getUsername());
+
+            // Check if user is present
+            if (optionalUser.isEmpty()) {
+                throw new CloudVendorNotFoundException("Client ID Not found!");
+            } else {
+                // Get the user and update the password
+                CloudClientUser cloudClientTempUser = optionalUser.get();
+                cloudClientTempUser.setPassword(cloudClientUser.getPassword());
+                
+                // Save the updated user object back to the repository
+                cloudClientLoginRepository.save(cloudClientTempUser);
+                System.out.println(cloudClientTempUser.toString());
+            }
+        } catch (CloudVendorNotFoundException e) {
+            // Handle specific exception
+            System.err.println(e.getMessage());
+            throw e; // Re-throwing to be caught by higher-level exception handler if present
+        } catch (Exception e) {
+            throw new RuntimeException("An unexpected error occurred while updating the user.");
         }
 
         return "Client Data Updated";
