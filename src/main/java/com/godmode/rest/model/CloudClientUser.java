@@ -1,5 +1,7 @@
 package com.godmode.rest.model;
 
+import org.hibernate.annotations.DialectOverride.OverridesAnnotation;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -54,5 +56,18 @@ public class CloudClientUser {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    @Override
+    public String toString() {
+        return """
+                {
+                    "username": "%s",
+                    "email": "%s",
+                    "password": "%s",
+                    "user_id": "%s",
+                    "phonenNumber": "%s"
+                }
+                """.formatted(username, email, password, user_id,phoneNumber);
+    }    
 
 }

@@ -22,11 +22,12 @@ public class CloudClientController {
 
     @GetMapping("/")
     public String getStarted(){
-        return "Started";
+        return "index";
     }
 
     @PostMapping("/createUser")
     public String getMethodName(@RequestBody CloudClientUser cloudClientUser) {
+        // System.out.println(cloudClientUser.toString());
         cloudClientLoginService.createUser(cloudClientUser);
         return "User Created";
     }
@@ -49,6 +50,7 @@ public class CloudClientController {
 
     @PostMapping("/authUser")
     public boolean authUser(@RequestBody CloudClientUser cloudClientUser){
+        // System.out.println(cloudClientUser.toString());
         return cloudClientLoginService.authUser(cloudClientUser.getUsername(), cloudClientUser.getPassword());
-    }
+    }   
 }
