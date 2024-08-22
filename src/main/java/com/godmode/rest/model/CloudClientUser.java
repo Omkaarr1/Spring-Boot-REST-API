@@ -1,7 +1,5 @@
 package com.godmode.rest.model;
 
-import org.hibernate.annotations.DialectOverride.OverridesAnnotation;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;

@@ -14,8 +14,6 @@ import com.godmode.rest.repository.ResourcesRepository;
 import com.godmode.rest.service.CloudVendorService;
 import com.godmode.rest.service.ResourcesService;
 
-import jakarta.annotation.Resource;
-
 @Service
 public class CloudBackendServiceImplementation implements CloudVendorService {
     
