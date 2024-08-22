@@ -1,7 +1,5 @@
 # **Spring Boot REST API Complete Project**
 
-# Cloud Management Platform
-
 ## Overview
 
 The Cloud Management Platform is a full-stack application designed to streamline the process of managing and selecting cloud services. The project leverages modern technologies like Spring Boot for the backend, and HTML, JavaScript, and CSS for the frontend, providing a robust and user-friendly interface for both Cloud Vendors and Cloud Users.
