@@ -88,7 +88,7 @@ public class CloudClientUserServiceImplementation implements CloudClientService{
 
     @Override
     public boolean authUserByUsername(String username, String password) {
-        System.out.println(username+" ------------------------ "+password);
+        // System.out.println(username+" ------------------------ "+password);
         for(CloudClientUser i:cloudClientLoginRepository.findAll())
         if(i.getUsername().equals(username) && i.getPassword().equals(password))
         return true;
