@@ -39,6 +39,7 @@ public class CloudBackendController {
     //Get All Cloud Vendor Details from DB
     @GetMapping("/getAll")
     public List<CloudVendor> getCloudVendorDetails() {
+        // System.out.println("-------------------------------------------");
         return cloudVendorService.getAllCloudVendor();
     }
 

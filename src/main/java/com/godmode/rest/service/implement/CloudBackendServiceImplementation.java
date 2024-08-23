@@ -3,6 +3,7 @@ package com.godmode.rest.service.implement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,7 @@ import com.godmode.rest.service.CloudVendorService;
 import com.godmode.rest.service.ResourcesService;
 
 @Service
-public class CloudBackendServiceImplementation implements CloudVendorService {
-    
+public class CloudBackendServiceImplementation implements CloudVendorService { 
     @Autowired
     CloudVendorRepository cloudVendorRepository;
 
@@ -64,10 +64,16 @@ public class CloudBackendServiceImplementation implements CloudVendorService {
 
     @Override
     public List<CloudVendor> getAllCloudVendor() {
-        if (cloudVendorRepository.findAll().isEmpty())
-            throw new CloudVendorNotFoundException("Cloud Vendor Does Not Exists!");
+        List<CloudVendor> allVendors = cloudVendorRepository.findAll();
+        List<CloudVendor> vmVendors = allVendors.stream()
+                                             .filter(vendor -> "VMs".equalsIgnoreCase(vendor.getType()))
+                                             .collect(Collectors.toList());
+
+        // System.out.println("-------------------"+vmVendors.toString());
+        if (vmVendors.isEmpty())
+            throw new CloudVendorNotFoundException("No Cloud Vendor with type VMs exists!");
         else
-            return cloudVendorRepository.findAll();
+            return vmVendors;
     }
 }
 
@@ -128,7 +134,7 @@ class ResourcesServiceImplementation implements ResourcesService{
         }
         return result;
     }
-
+    
     @Override
     public List<Resources> getResourcesBasedOnUser_id(String user_id) {
         System.out.println(user_id);

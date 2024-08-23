@@ -14,6 +14,9 @@ public class CloudVendor {
     private String vendorName;
     private String vendorAddress;
     private String vendorPhoneNumber;
+    private String type;
+    private String quantity;
+    private String price_per_hour;
 
     public CloudVendor() {
     }
@@ -57,4 +60,27 @@ public class CloudVendor {
         this.vendorPhoneNumber = vendorPhoneNumber;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getPrice_per_hour() {
+        return price_per_hour;
+    }
+
+    public void setPrice_per_hour(String price_per_hour) {
+        this.price_per_hour = price_per_hour;
+    }
 }

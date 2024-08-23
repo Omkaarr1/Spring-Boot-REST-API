@@ -3,6 +3,7 @@ $(document).ready(function() {
     $(".afterlogin").hide();
     $(".billingDetails").hide();
     $(".updateDetails").hide();
+    $("#vmDiv").hide();
 
     // Check if the user is already logged in and has a stored user ID
     if (sessionStorage.getItem('isLoggedIn') && sessionStorage.getItem('user_id')) {
@@ -254,7 +255,41 @@ $("#billingBtn").on("click", function() {
         error: function(xhr, status, error) {
             console.error('Error fetching resources:', error);
         }
+        });
     });
-});
+
+    $("#vm").click(() => {
+        $(".afterlogin").hide();
+        $("#vmDiv").show();
+        
+        $.ajax({
+            url: "/cloudvendor/getAll", // Assuming your API endpoint
+            method: "GET",
+            success: function(data) {
+                let rows = '';
+                let options = '<option value="">Select Vendor</option>';
+                data.forEach(vendor => {
+                    rows += `
+                        <tr>
+                            <td><input type="checkbox" class="vendorCheckbox" value="${vendor.vendor_id}"></td>
+                            <td>${vendor.vendor_id}</td>
+                            <td>${vendor.vendorName}</td>
+                            <td>${vendor.vendorAddress}</td>
+                            <td>${vendor.vendorPhoneNumber}</td>
+                            <td>${vendor.quantity}</td>
+                            <td>${vendor.price_per_hour}</td>
+                        </tr>
+                    `;
+                });
+                $("#vendorTable tbody").html(rows);
+                $("#vendorSelect").html(options);
+            },
+            error: function(err) {
+                console.error("Failed to fetch vendor details:", err);
+            }
+        });
+    });
+
+
 
 });

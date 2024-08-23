@@ -379,3 +379,59 @@ h1 {
 .back-button:hover {
     background-color: #6d44b8;
 }
+
+#vmDiv {
+    margin: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#vendorTable {
+    width: 90%; /* Increased width to cover more space */
+    margin: 25px auto;
+    font-family: 'Arial', sans-serif;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    text-align: center;
+}
+
+#vendorTable thead tr {
+    background-color: #573b8a;
+    color: #ffffff;
+}
+
+#vendorTable th,
+#vendorTable td {
+    padding: 15px 20px; /* Increased padding for a more spacious look */
+    text-align: center;
+    font-weight: normal;
+    color: #333333;
+}
+
+#vendorTable th {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+#vendorTable tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+#vendorTable tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+#vendorTable tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+#vendorTable tbody tr:last-of-type {
+    border-bottom: 2px solid #573b8a;
+}
