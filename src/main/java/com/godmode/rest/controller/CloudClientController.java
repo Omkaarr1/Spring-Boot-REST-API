@@ -59,4 +59,9 @@ public class CloudClientController {
         // System.out.println(cloudClientUser.toString());
         return cloudClientLoginService.authUserByUsername(cloudClientUser.getUsername(), cloudClientUser.getPassword());
     }   
+
+    @PostMapping("/getUser_id")
+    public String getUserIdByUsername(@RequestBody CloudClientUser cloudClientUser){
+        return cloudClientLoginService.getUserIdByUsername(cloudClientUser.getUsername());
+    }
 }

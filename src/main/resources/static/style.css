@@ -260,3 +260,27 @@ h1 {
 .validate-btn:hover, #submitBtn:hover {
     background: #6d44b8;
 }
+
+/* Add these styles */
+.user-profile {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* Add these styles */
+.profile-icon {
+    font-size: 50px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+
+.user-id {
+    font-size: 1.2em;
+    color: #fff;
+    font-weight: bold;
+}
+

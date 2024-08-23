@@ -96,4 +96,13 @@ public class CloudClientUserServiceImplementation implements CloudClientService{
             return false;
     }
 
+    @Override
+    public String getUserIdByUsername(String username) {
+        // System.out.println(username);
+        for(CloudClientUser i:cloudClientLoginRepository.findAll())
+        if(i.getUsername().equals(username))
+        return i.getUser_id();
+            return null;
+    }
+
 }

@@ -60,6 +60,23 @@ $(document).ready(function() {
                 if(response){
                     $(".main").hide();
                     $(".afterlogin").show();
+
+                    $.ajax({
+                        url: '/user/getUser_id',  // The endpoint to fetch the user ID
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            username: $("#usernamee").val()  // Replace 'yourUsername' with the actual username variable
+                        }),
+                        success: function(response) {
+                            // Assuming the response contains the user ID
+                            console.log("data -> "+response);
+                            $('#fetchUser_Id').text(response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching user ID:', error);
+                        }
+                    });
                     sessionStorage.setItem('isLoggedIn', true); // Store login state
                 }
                 else
@@ -100,7 +117,6 @@ $(document).ready(function() {
 
     $("#validateBtn").click(()=>{
 
-        $("#validateBtn").hide();
         const data = {
             "username": $("#username").val(),
             "password":$("#password").val()
@@ -118,7 +134,9 @@ $(document).ready(function() {
                 if(response == false)
                    alert("username or password incorrect");
                 else{
+                $("#validateBtn").hide();
                 $("#newPassword").show();
+                $("#password").hide();
                 $("#submitBtn").show();}
             },
             error: function(xhr, status, error) {

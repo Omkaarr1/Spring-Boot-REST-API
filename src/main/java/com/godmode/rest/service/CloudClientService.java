@@ -11,4 +11,5 @@ public interface CloudClientService {
     public String updateUser(CloudClientUser cloudClientUser);
     public boolean checkUser(String id);
     public List<String> getAllUserNames();
+    public String getUserIdByUsername(String username);
 }
