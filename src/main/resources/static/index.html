@@ -83,10 +83,11 @@
         <div class="update card">
             <form id="updateForm">
                 <label for="chk" aria-hidden="true">Update Details</label>
-                <input type="text" name="username" placeholder="User ID" id="username" required="">
-                <input type="password" name="password" placeholder="Password" id="password" required="">
+                <input type="text" name="username" placeholder="User ID" id="username">
+                <input type="password" name="password" placeholder="Password" id="password">
                 <button type="button" class="btn validate-btn" id="validateBtn">Validate</button>
-                <input type="password" name="newPassword" id="newPassword" placeholder="New Password" required="" style="display: none;">
+                <button type="button" class="back-button" id="backBtnn">Back</button>
+                <input type="password" name="newPassword" id="newPassword" placeholder="New Password" style="display: none;">
                 <button type="submit" class="btn" id="submitBtn" style="display: none;">Submit</button>
             </form>
         </div>
@@ -98,9 +99,9 @@
         </table>
         <button class="back-button" id="backBtn">Back</button>
     </div>
-    
-    
-      
+
+
+
 	<script src="script.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -16,6 +16,11 @@ $(document).ready(function() {
         $(".afterlogin").show();      // Show the afterlogin section again
     });
 
+    $("#backBtnn").on("click", function() {
+        $(".updateDetails").hide();  // Hide the billingDetails section
+        $(".afterlogin").show();      // Show the afterlogin section again
+    });
+
     // Handle Signup form submission
     $('.signup form').on('submit', function(event) {
         event.preventDefault();
@@ -133,7 +138,9 @@ $(document).ready(function() {
                 $("#validateBtn").hide();
                 $("#newPassword").show();
                 $("#password").hide();
-                $("#submitBtn").show(); }
+                $("#submitBtn").show(); 
+                $("#backBtnn").hide();
+                }
             },
             error: function(xhr, status, error) {
                 console.error('Login Error:', error);
@@ -162,9 +169,16 @@ $(document).ready(function() {
                 if (response == false) {
                     alert("Internal Server Error");
                 } else {
-                    alert("Data Updated");
+                    $("#validateBtn").show();
+                    $("#newPassword").hide();
+                    $("#password").show();
+                    $("#submitBtn").hide(); 
+                    $("#backBtnn").show();
                     $(".updateDetails").hide();
                     $(".afterlogin").show();
+                    $("#username").val("");
+                    $("#password").val("");
+                    alert("Data Updated");
                 }
             },
             error: function(xhr, status, error) {
