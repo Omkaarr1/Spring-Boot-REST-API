@@ -1,5 +1,7 @@
 package com.godmode.rest.service.implement;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +69,6 @@ public class CloudBackendServiceImplementation implements CloudVendorService {
         else
             return cloudVendorRepository.findAll();
     }
-
 }
 
 @Service
@@ -120,10 +121,38 @@ class ResourcesServiceImplementation implements ResourcesService{
 
     @Override
     public List<String> getListOfUseresForSpecificVendorId(String resource_id) {
+        List<String> result = new ArrayList<>();
         for(Resources i:resourcesRepository.findAll()){
             if(i.getResource_id().equals(resource_id))
-            return i.getUser_id();
+            result.add(i.getUser_id());
         }
-        return null;
+        return result;
     }
+
+    @Override
+    public List<Resources> getResourcesBasedOnUser_id(String user_id) {
+        System.out.println(user_id);
+        List<Resources> resourcesList = new ArrayList<>();
+
+        for (Resources resource : resourcesRepository.findAll()) {
+            if (resource.getUser_id().equals(user_id)) {
+                Resources resourceDetails = new Resources();
+                resourceDetails.setResource_id(resource.getResource_id());
+                resourceDetails.setVendor_id(resource.getVendor_id());
+                resourceDetails.setTypeOfResource(resource.getTypeOfResource());
+                resourceDetails.setQuantity(resource.getQuantity());
+                resourceDetails.setPricePerHour(resource.getPricePerHour());
+                resourceDetails.setTotalNoOfHoursUsed(resource.getTotalNoOfHoursUsed());
+                resourcesList.add(resourceDetails);
+            }
+        }
+        
+        if (resourcesList.isEmpty()) {
+            return Collections.emptyList(); // Return an empty list if no data is found
+        }
+    
+    return resourcesList;
+}
+
+
 }

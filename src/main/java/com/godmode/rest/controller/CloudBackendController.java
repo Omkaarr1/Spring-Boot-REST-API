@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.godmode.rest.model.CloudClientUser;
 import com.godmode.rest.model.CloudVendor;
 import com.godmode.rest.model.Resources;
 import com.godmode.rest.service.CloudVendorService;
 import com.godmode.rest.service.ResourcesService;
+
+import jakarta.annotation.Resource;
 
 @RestController
 @RequestMapping("/cloudvendor")
@@ -93,6 +96,12 @@ class ResourcesController {
     @PostMapping("/getListOfUsers")
     public List<String> getListOfUsers(@RequestBody String id){
         return resourcesService.getListOfUseresForSpecificVendorId(id);
+    }
+
+    @PostMapping("/getResourcesBasedOnUserId")
+    public List<Resources> getResourcesBasedOnUserId(@RequestBody CloudClientUser user){
+        System.out.println(user.toString());
+        return resourcesService.getResourcesBasedOnUser_id(user.getUser_id());
     }
 }
 

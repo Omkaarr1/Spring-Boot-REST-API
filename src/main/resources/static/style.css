@@ -284,3 +284,98 @@ h1 {
     font-weight: bold;
 }
 
+.billingDetails {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.styled-table {
+    width: 60%;
+    margin: 25px 0;
+    font-family: 'Arial', sans-serif;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.styled-table thead tr {
+    background-color: #573b8a;
+    color: #ffffff;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    text-align: center;
+    font-weight: normal;
+    color: #333333;
+}
+
+.styled-table th {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #573b8a;
+}
+
+.billingDetails {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.styled-table {
+    width: 60%;
+    margin: 25px 0;
+    font-family: 'Arial', sans-serif;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.back-button {
+    margin-top: 10px;
+    padding: 6px 12px;  /* Smaller padding */
+    font-size: 12px;    /* Smaller font size */
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #573b8a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #6d44b8;
+}

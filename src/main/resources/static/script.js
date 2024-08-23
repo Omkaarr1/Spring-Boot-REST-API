@@ -4,11 +4,17 @@ $(document).ready(function() {
     $(".billingDetails").hide();
     $(".updateDetails").hide();
 
-    // Check if the user is already logged in (by checking session storage)
-    if (sessionStorage.getItem('isLoggedIn')) {
+    // Check if the user is already logged in and has a stored user ID
+    if (sessionStorage.getItem('isLoggedIn') && sessionStorage.getItem('user_id')) {
         $(".main").hide();
         $(".afterlogin").show();
+        $('#fetchUser_Id').text(sessionStorage.getItem('user_id'));
     }
+
+    $("#backBtn").on("click", function() {
+        $(".billingDetails").hide();  // Hide the billingDetails section
+        $(".afterlogin").show();      // Show the afterlogin section again
+    });
 
     // Handle Signup form submission
     $('.signup form').on('submit', function(event) {
@@ -70,8 +76,11 @@ $(document).ready(function() {
                         }),
                         success: function(response) {
                             // Assuming the response contains the user ID
-                            console.log("data -> "+response);
+                            console.log("data -> " + response);
                             $('#fetchUser_Id').text(response);
+
+                            // Store the user ID in sessionStorage
+                            sessionStorage.setItem('user_id', response);
                         },
                         error: function(xhr, status, error) {
                             console.error('Error fetching user ID:', error);
@@ -89,37 +98,24 @@ $(document).ready(function() {
         });
     });
 
-    // Handle resource selection
-    // $(".btn").on("click", function() {
-    //     const resourceType = $(this).text();
-    //     if(resourceType !== "Logout") {
-    //         alert("You have selected: " + resourceType);
-    //     }
-    // });
-
     // Handle Logout button click
     $("#logoutBtn").on("click", function() {
         sessionStorage.removeItem('isLoggedIn');
+        sessionStorage.removeItem('user_id');
         $(".afterlogin").hide();
         $(".main").show();
     });
 
-     // Handle Billing Details button click
-     $("#billingBtn").on("click", function() {
-        $(".afterlogin").hide(); // Remove all existing content
-        $(".billingDetails").show(); 
-    });
-
-    $("#updateBtn").click(()=>{
+    $("#updateBtn").click(() => {
         $(".afterlogin").hide(); // Remove all existing content
         $(".updateDetails").show();
     });
 
-    $("#validateBtn").click(()=>{
+    $("#validateBtn").click(() => {
 
         const data = {
             "username": $("#username").val(),
-            "password":$("#password").val()
+            "password": $("#password").val()
         }
 
         console.log(data);
@@ -131,13 +127,13 @@ $(document).ready(function() {
             data: JSON.stringify(data), // Convert the JSON object to a string
             success: function(response) {
                 console.log('Login Response:', response);
-                if(response == false)
+                if (response == false)
                    alert("username or password incorrect");
-                else{
+                else {
                 $("#validateBtn").hide();
                 $("#newPassword").show();
                 $("#password").hide();
-                $("#submitBtn").show();}
+                $("#submitBtn").show(); }
             },
             error: function(xhr, status, error) {
                 console.error('Login Error:', error);
@@ -163,7 +159,7 @@ $(document).ready(function() {
             data: JSON.stringify(data), // Convert the JSON object to a string
             success: function(response) {
                 console.log('Login Response:', response);
-                if(response == false) {
+                if (response == false) {
                     alert("Internal Server Error");
                 } else {
                     alert("Data Updated");
@@ -177,5 +173,74 @@ $(document).ready(function() {
             }
         });
     });
+
+// Handle Billing Details button click
+$("#billingBtn").on("click", function() {
+    $(".afterlogin").hide(); // Remove all existing content
+    $(".billingDetails").show(); 
+
+    console.log($("#fetchUser_Id").text())
+
+    $.ajax({
+        url: '/resources/getResourcesBasedOnUserId',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            user_id: $("#fetchUser_Id").text()  // Replace 'yourUserId' with the actual user ID
+        }),
+        success: function(response) {
+            var billingTable = $('#billingData');
+            billingTable.empty();  // Clear the table before adding new data
+            
+            // Add table headers again after clearing the table
+            var tableHeader = '<thead>' +
+                              '<tr>' +
+                                  '<th>Resource ID</th>' +
+                                  '<th>Vendor ID</th>' +
+                                  '<th>Type of Resource</th>' +
+                                  '<th>Quantity</th>' +
+                                  '<th>Price Per Hour</th>' +
+                                  '<th>Total Hours Used</th>' +
+                                  '<th>Total Cost</th>' + // Add a new column for Total Cost
+                              '</tr>' +
+                              '</thead>';
+            billingTable.append(tableHeader);
+    
+            var tableBody = '<tbody>';
+            var totalBill = 0; // Variable to accumulate the total bill amount
+
+            // Iterate through the response and add rows to the table
+            response.forEach(function(resource) {
+                var totalCost = resource.pricePerHour * resource.totalNoOfHoursUsed * resource.quantity; // Calculate total cost for each resource
+                totalBill += totalCost; // Add to the total bill
+
+                var row = '<tr>' +
+                            '<td>' + resource.resource_id + '</td>' +
+                            '<td>' + resource.vendor_id + '</td>' +
+                            '<td>' + resource.typeOfResource + '</td>' +
+                            '<td>' + resource.quantity + '</td>' +
+                            '<td>' + resource.pricePerHour + '</td>' +
+                            '<td>' + resource.totalNoOfHoursUsed + '</td>' +
+                            '<td>Rs.' + totalCost.toFixed(2) + '</td>' + // Add the total cost to the table
+                          '</tr>';
+                tableBody += row;
+            });
+
+            // Add a row for the total bill amount
+            var totalRow = '<tr>' +
+                           '<td colspan="6" style="text-align:right; font-weight:bold;">Total Bill:</td>' +
+                           '<td style="font-weight:bold;">Rs.' + totalBill.toFixed(2) + '</td>' +
+                           '</tr>';
+            tableBody += totalRow;
+
+            tableBody += '</tbody>';
+    
+            billingTable.append(tableBody);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching resources:', error);
+        }
+    });
+});
 
 });
