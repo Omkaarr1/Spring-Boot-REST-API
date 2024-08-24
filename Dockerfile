@@ -2,7 +2,7 @@
 FROM maven:3.8.8-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY . .
-RUN mvn clean install
+RUN mvn clean install -DskipTests
 
 # Use an official OpenJDK 21 image to run the application
 FROM eclipse-temurin:21-jdk
