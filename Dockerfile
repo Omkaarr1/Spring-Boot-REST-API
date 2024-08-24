@@ -5,7 +5,7 @@ COPY . .
 RUN mvn clean install
 
 # Use an official OpenJDK 21 image to run the application
-FROM eclipse-temurin:21-jdk-slim
+FROM eclipse-temurin:21-jdk
 WORKDIR /app
 COPY --from=build /app/target/rest-0.0.1-SNAPSHOT.jar /app/rest-0.0.1-SNAPSHOT.jar
 ENTRYPOINT ["java", "-jar", "/app/rest-0.0.1-SNAPSHOT.jar"]
