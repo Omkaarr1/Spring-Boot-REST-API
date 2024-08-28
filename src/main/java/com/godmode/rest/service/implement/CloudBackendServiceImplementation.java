@@ -82,24 +82,6 @@ class ResourcesServiceImplementation implements ResourcesService{
 
     @Autowired
     ResourcesRepository resourcesRepository;
-    @Autowired
-    CloudVendorRepository cloudVendorRepository;
-
-    @Override
-    public String saveResource(Resources resources) {
-        try{
-
-            if(!cloudVendorRepository.findById(resources.getVendor_id()).isEmpty())
-            resourcesRepository.save(resources);
-            else
-            throw new CloudVendorNotFoundException("Id Not found");
-        }
-        catch(CloudVendorNotFoundException e){
-        throw new CloudVendorNotFoundException(e.getMessage());
-        }
-
-        return "Data saved Successfully";
-    }
 
     @Override
     public String removeResurces(@PathVariable String id) {
@@ -109,7 +91,7 @@ class ResourcesServiceImplementation implements ResourcesService{
     }
 
     @Override
-    public String updateResurces(Resources resources) {
+    public String updateResurces(List<Resources> resources) {
         saveResource(resources);
         return "data Updated Successfully";
     }
@@ -158,7 +140,15 @@ class ResourcesServiceImplementation implements ResourcesService{
         }
     
     return resourcesList;
-}
+    }
 
-
+    @Override
+    public String saveResource(List<Resources> resourcesList) {
+        try {
+            resourcesRepository.saveAll(resourcesList);
+        } catch (CloudVendorNotFoundException e) {
+            throw new CloudVendorNotFoundException("Cloud vendor not found: " + e.getMessage());
+        }
+        return "Data saved successfully";
+    }
 }

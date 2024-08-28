@@ -290,6 +290,61 @@ $("#billingBtn").on("click", function() {
         });
     });
 
+    $('#purchaseBtn').click(function() {
+        let selectedData = [];
+    
+        $('#vendorTable tbody tr').each(function() {
+            let row = $(this);
+            let isSelected = row.find('input[type="checkbox"]').is(':checked');
+    
+            if (isSelected) {
+                let resourceData = {
+                    resource_id: Math.floor(100000 + Math.random() * 900000).toString(),  // Generate a random 6-digit number as a string
+                    vendor_id: row.find('td:eq(1)').text(),
+                    user_id: $("#fetchUser_Id").text(),  // Assuming you have a user ID stored somewhere
+                    typeOfResource: row.find('td:eq(2)').text(),  // Assuming you want to use vendorName as the type of resource
+                    quantity: row.find('td:eq(5)').text(),
+                    pricePerHour: row.find('td:eq(6)').text(),
+                    totalNoOfHoursUsed: Math.floor(Math.random() * 41) + 10 // Random number between 10 and 50
+                };
+                selectedData.push(resourceData);
+            }
+        });
+    
+        if (selectedData.length === 0) {
+            alert("No items selected!");
+            return;  // Prevent the request from being sent if no items are selected
+        }
+    
+        let jsonData = JSON.stringify(selectedData, null, 2);
+        console.log(jsonData);
+    
+        // Send the POST request
+        $.ajax({
+            url: '/resources/save',  // Replace with your actual server endpoint
+            type: 'POST',
+            contentType: 'application/json',
+            data: jsonData,  // Send the JSON data
+            success: function(response) {
+                console.log('Server Response:', response);
+                alert("Data Updated Successfully!");
+                $("#vmDiv").hide();
+                $(".afterlogin").show();
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+                alert("Failed to update data: " + error);
+            }
+        });
+    });
+    
 
+    $('#backBtnnnnn').click(() => {
+        // console.log("Back button clicked");
+        $("#vmDiv").hide();
+        // console.log("vmDiv hidden");
+        $(".afterlogin").show();
+        // console.log("afterlogin shown");
+    });    
 
 });

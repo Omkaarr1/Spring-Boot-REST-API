@@ -435,3 +435,109 @@ h1 {
 #vendorTable tbody tr:last-of-type {
     border-bottom: 2px solid #573b8a;
 }
+
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Jost', sans-serif;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+}
+
+#vmDiv {
+    margin: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#vendorTable {
+    width: 90%;
+    margin: 25px auto;
+    font-family: 'Arial', sans-serif;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    text-align: center;
+}
+
+#vendorTable thead tr {
+    background-color: #573b8a;
+    color: #ffffff;
+}
+
+#vendorTable th,
+#vendorTable td {
+    padding: 15px 20px;
+    text-align: center;
+    font-weight: normal;
+    color: #333333;
+}
+
+#vendorTable th {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+#vendorTable tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+#vendorTable tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+#vendorTable tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+#vendorTable tbody tr:last-of-type {
+    border-bottom: 2px solid #573b8a;
+}
+
+#purchaseBtn {
+    width: 150px;
+    padding: 10px;
+    margin: 20px auto;
+    display: block;
+    color: #fff;
+    background: #573b8a;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease-in;
+}
+
+#purchaseBtn:hover {
+    background: #6d44b8;
+}
+
+#backBtnnnnn{
+    width: 150px;
+    padding: 10px;
+    margin: 20px auto;
+    display: block;
+    color: #fff;
+    background: #573b8a;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease-in;
+}
+
+#backBtnnnnn:hover {
+    background: #6d44b8;
+}

@@ -17,8 +17,6 @@ import com.godmode.rest.model.Resources;
 import com.godmode.rest.service.CloudVendorService;
 import com.godmode.rest.service.ResourcesService;
 
-import jakarta.annotation.Resource;
-
 @RestController
 @RequestMapping("/cloudvendor")
 public class CloudBackendController {
@@ -74,13 +72,13 @@ class ResourcesController {
     }
 
     @PostMapping("/save")
-    public String saveCloudVendor(@RequestBody Resources resources){
+    public String saveCloudVendor(@RequestBody List<Resources> resources){
         // System.out.println(resources.getPricePerHour());
         return resourcesService.saveResource(resources);
     }
 
     @PostMapping("/update")
-    public String updateCloudVendor(@RequestBody Resources resources){
+    public String updateCloudVendor(@RequestBody List<Resources> resources){
         return resourcesService.updateResurces(resources);
     }
 
