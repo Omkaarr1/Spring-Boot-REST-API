@@ -50,22 +50,19 @@ public class CloudClientUser {
     }
     public String getPhoneNumber() {
         return phoneNumber;
-    }
+    }  
+
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
     @Override
     public String toString() {
-        return """
-                {
-                    "username": "%s",
-                    "email": "%s",
-                    "password": "%s",
-                    "user_id": "%s",
-                    "phonenNumber": "%s"
-                }
-                """.formatted(username, email, password, user_id,phoneNumber);
-    }    
+        return String.format(
+            "{\n  \"username\": \"%s\",\n  \"email\": \"%s\",\n  \"password\": \"%s\",\n  \"user_id\": \"%s\",\n  \"phoneNumber\": \"%s\"\n}",
+            username, email, password, user_id, phoneNumber
+        );
+    }
+
 
 }

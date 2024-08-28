@@ -42,13 +42,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
+                        <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>15</source>
+                    <target>15</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -56,7 +56,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.4.0</version>
                 <configuration>
-                    <source>${java.version}</source>
+                    <source>21</source>
                     <encoding>UTF-8</encoding>
                     <docencoding>UTF-8</docencoding>
                     <charset>UTF-8</charset>
